@@ -1,0 +1,17 @@
+This code implements the Assigment 3 of Quantum information course Autumn 2023
+
+The following files are included:
+Exc1:
+matrix.f90 #fortran code for the exercise
+one.txt, two.txt, three.txt #used for writing data of the three 
+			     used matrix methods into txt files
+
+-------------------------------------
+pyusefort_ex1.py #py code for the resulting data analysis
+settings.txt #input file used to communicate between python and fortran code
+reset.sh #basically deletes the stuff in the one,two,three.txt files for 
+	  to make room for new data
+----------------------------------------------
+------------------------------------------------------
+
+

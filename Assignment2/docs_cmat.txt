@@ -1,0 +1,43 @@
+This code implements Exercises 3 of Assignment 2 of Quantum information course Autumn 2023
+
+the following files are included:
+#the fortran code for exercise 3 
+cmatrix_mod.f90
+ (complex matrix derived type+new subroutines, and a program that executes a test run)
+
+#a .txt file that cmatrix_mod.f90 uses to store results
+cmatrix_mod_output.txt
+
+#####Some explanation for debug.f90#######
+    -can be used to print either real/imaginary/integer values at wanted locations
+In &debug.f90:
+    -var is the variable that has to be specified to be printed
+    -debug is the level of debugging wanted (0 for no debugging, otherwise 1 or 2)
+
+#####Some explanation for cmatrix_mod.f90#######
+    -implements a new derived type "cmatrix" (a double complex matrix)
+    -includes subroutines that can calculate trace/adjoint
+
+In &cmatrix_mod.f90:
+    -bin_glob is variable which can be 0,1,2
+        -0 matrix has all entries the same (1 currently)
+        -1 matrix can be inputted manually in terminal
+        -2 random_number is used to generate random matrix
+
+lines 1-204: the cmatrix module
+    lines 4-8: type matrix
+    lines 24-111: subroutine matrix initialization
+    lines 113-136: subroutine matrix trace calculation
+    lines 138-167: subroutine matrix adjoin calculation
+    lines 169-203: subroutine writing of all results in the txt file
+lines 206-219: program that tests the module
+############
+A terminal run of cmatrix_mod.f90 using gfortran:
+gfortran cmatrix_mod.f90 .o cmat
+./cmat
+n #number of rows of matrix (integer)
+m #number of columns of matrix (integer)
+tmp #specifies if real (enter 0) or complex (enter 1) matrix will be used
+############
+Note: Currently, if a real matrix is to be used, the code simply converts it to a complex matrix with all
+      elements imaginary parts equal to 0.

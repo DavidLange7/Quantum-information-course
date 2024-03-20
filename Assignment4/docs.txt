@@ -1,0 +1,10 @@
+This code implements the Assigment 4 of Quantum information course Autumn 2023
+
+The following files are included:
+assign4_matf90 #fortran code for the exercise
+E.txt, mesh.txt, Z.txt #used for writing data, E are eigenvalues, Z the wavefunctions
+
+-------------------------------------
+plotting_fd.py #py code for the resulting data analysis
+----------------------------------------------
+------------------------------------------------------

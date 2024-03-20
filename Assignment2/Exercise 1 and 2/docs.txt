@@ -1,0 +1,47 @@
+This code implements the Assigment 1 of Quantum information course Autumn 2023
+
+The following files are included:
+
+#exercise 3 (multiplying 2 matrices with explicit/intrinsic methods)
+matrix.f90 #fortran code
+matrix_auto.sh #to run the f90 file using predefined range of square matrix dimensions 
+		and outputing the computation times of the three methods in the one/two/three.txt files
+matrix_man.sh #if you want to run the f90 file but put two matrices manually to be multiplied
+matrix_auto_plot.py #to plot the one/two/three.txt files
+one.txt, two.txt, three.txt #the three files that are automatically (first deleted if existing) generated in the matrix_auto.sh that store the
+			     computation times of the three methods of matrix multiplication for later analysis 
+
+Note: -For the .py to run you have to change the np.loadtxt(PATH). Also, in order to run the matrix.f90 program the files
+	'one.txt', 'two.txt' and 'three.txt' files have to exist in order to run.
+      -The "dimension" (of the square matrices) array is generated manually in the .py file, so should be checked to actually match with the inputted 
+       dimensions in the matrix_auto.sh run to have meaningful plots 
+
+#####Some explanation for matrix.f90#####
+	-uses first a do do do loop to compute the multiplication of two matrices (either given automatically or manually from console input)
+	-uses the intrinsic matmul function of fortran
+		-for both the different computation times can be printed onto txt files which then can be used to plot number of dimensions vs. comp time
+
+In &matrix.f90: (only these variables are changeable, the rest is fixed by algorithm)
+	-bin_glob is either 0 or 1, 0 creates automatically the matrix entries while 1 means manually typing them into terminal
+	-n_mat1, m_mat1 are number of rows, number of columns of first matrix
+	-n_mat2, m_mat2 are number of rows, number of columns of second matrix
+lines 1-32: module debugger that incorporates printing subroutines for different types (integer, real, imaginary) to be used
+	    to print variables at needed locations in the code 
+lines 34-180: Program that executes the exercise
+	lines 44-57: user input to initialize matrices
+	lines 63-96: creating the matrices either manually or automatically
+	lines 105-132: explicit rowwise matrix multiplication
+	lines 136-161: explicit columnwise matrix multiplication
+	lines 164-179: intrinsic fortran function "matmul" matrix multiplication
+########
+A terminal run of matrix.f90 using gfortran:
+
+gfortran matrix.f90 -o mat
+./mat
+bin_glob #either 0 or 1
+n_mat1
+m_mat1
+n_mat2 #remember m_mat1 and n_mat2 should be the same for matrix multiplication
+m_mat2
+########
+However, to run matrix.f90 it is most convenient to use the two bash scripts
